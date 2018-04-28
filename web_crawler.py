@@ -8,7 +8,6 @@ class People(object):
         self.names = None
         self.birth_lists = None
         self.job_lists = None
-
         self.site = pywikibot.Site("en", "wikipedia")
         # Make site object to get the data from.
 
@@ -28,6 +27,7 @@ class People(object):
         # Get things from the box on date of birth.
         for binfo in birth_date:
             b = binfo.getTarget()
+            print(b.__dict__.keys())
             # Get info from target.
             year_birth = b.year
             month_birth = b.month
@@ -35,8 +35,9 @@ class People(object):
             hour_birth = b.hour
             minute_birth = b.minute
             second_birth = b.second
+            timezone_birth = b.timezone
             birth_date = [second_birth, minute_birth, hour_birth, day_birth,
-                          month_birth, year_birth]
+                          month_birth, year_birth, timezone_birth]
             # Get birth date information (up from second to year).
 
         birth_location = clm_dict["P19"]

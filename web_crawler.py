@@ -42,10 +42,12 @@ class People(object):
         birth_location = clm_dict["P19"]
         # Get things from the box on location of birth.
         for binfo in birth_location:
+            print(len(birth_location))
             b = binfo.getTarget()
             bp_id = b.id
             # Get ID of birth location (for use in coordinate location).
-            self.get_location_info(bp_id)
+            location = self.get_location_info(bp_id)
+
 
     def get_location_info(self, identify):
         """Get location coordinates for astrology"""
@@ -61,9 +63,9 @@ class People(object):
         for c in coords:
             c_data = c.getTarget()
             lat = c_data.lat
-            long = c_data.long
+            long = c_data.lon
             alt = c_data.alt
-            print(c_data.__dict__.keys())
+            location_info = [lat, long, alt]
 
 c = People()
 
